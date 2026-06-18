@@ -10,13 +10,15 @@
   --color-background: #f4f5f6;
   --color-foreground: #09090b;
   --color-main: #ffffff;
+  --color-title: #515154;
 
   /* font size */
-
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
 
   /* margin/padding */
 
