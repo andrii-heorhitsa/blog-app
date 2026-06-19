@@ -1,7 +1,7 @@
 import { Title } from "@/components/title";
 import styles from "./page.module.css";
 import { getPosts } from "@/lib/devtoService";
-import { PostList } from "@/features/postList";
+import { PostList } from "@/features/post-list";
 
 export default async function Home() {
   const posts = await getPosts();
