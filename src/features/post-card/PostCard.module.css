@@ -1,0 +1,18 @@
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+.description {
+}
+
+.publishedAt {
+}
+
+.readingTime {
+}

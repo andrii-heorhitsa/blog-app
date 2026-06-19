@@ -1,4 +1,4 @@
-export type PostInfoDto = {
+export type PostInfo = {
   id: number;
   title: string;
   coverImage: string;
