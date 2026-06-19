@@ -1,6 +1,6 @@
-import { PostInfoDto } from "@/types/posts";
+import { PostInfo } from "@/types/posts";
 
-type RawPost = {
+type PostInfoDto = {
   id: number;
   title: string;
   description: string;
@@ -15,7 +15,7 @@ const DEVTO_API_URL = "https://dev.to/api";
 export async function getPosts(
   perPage: number = 10,
   page?: number,
-): Promise<PostInfoDto[]> {
+): Promise<PostInfo[]> {
   const result = await fetch(
     `${DEVTO_API_URL}/articles?per_page=${perPage}${page ? `&page=${page}` : ""}`,
   );
@@ -24,7 +24,7 @@ export async function getPosts(
     throw new Error("Failed to fetch articles");
   }
 
-  const rawPosts: RawPost[] = await result.json();
+  const rawPosts: PostInfoDto[] = await result.json();
 
   return rawPosts.map((post) => ({
     id: post.id,
