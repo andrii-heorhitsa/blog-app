@@ -1,3 +1,9 @@
+.postCardContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .imageWrapper {
   position: relative;
   width: 100%;
@@ -9,6 +15,7 @@
 }
 
 .description {
+  flex-grow: 1;
 }
 
 .publishedAt {
