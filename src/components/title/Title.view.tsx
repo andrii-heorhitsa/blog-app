@@ -1,4 +1,5 @@
 import styles from "./Title.module.css";
+import typography from "@/styles/typography.module.css";
 
 interface TitleProps {
   children: React.ReactNode;
@@ -8,9 +9,10 @@ interface TitleProps {
 
 export function Title({ children, as = "h2", className }: TitleProps) {
   const TitleTag = as;
+  const sizeClass = typography[as];
 
   return (
-    <TitleTag className={`${styles.title}${className || ""}`}>
+    <TitleTag className={`${styles.title} ${sizeClass} ${className || ""}`}>
       {children}
     </TitleTag>
   );
