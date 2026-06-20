@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import "./globals.css";
+import { Roboto, Cormorant_Garamond } from "next/font/google";
+import "@/styles/globals.css";
 import Providers from "./providers";
 import { Header } from "@/features/layout/header";
 import { Footer } from "@/features/layout/footer";
@@ -9,6 +9,13 @@ const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin", "cyrillic"],
   variable: "--font-roboto",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
@@ -23,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${roboto.variable}`}>
+    <html lang="en" className={`${roboto.className} ${cormorant.variable}`}>
       <body>
         <Header />
         <Providers>{children}</Providers>
