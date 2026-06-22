@@ -11,8 +11,11 @@
   --color-foreground: #09090b;
   --color-main: #ffffff;
   --color-title: #181818;
+  --color-border: #e4e4e7;
+  --color-text-muted: #71717a;
 
   /* font size */
+  --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.25rem;
