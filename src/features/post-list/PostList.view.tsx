@@ -9,8 +9,8 @@ interface PostListViewProps {
 export function PostListView({ posts }: PostListViewProps) {
   return (
     <div className={styles.postListContainer}>
-      {posts.map((post: PostInfo) => (
-        <PostCard key={post.id} post={post} />
+      {posts.map((post: PostInfo, index: number) => (
+        <PostCard key={post.id} post={post} priority={index < 2} />
       ))}
     </div>
   );
