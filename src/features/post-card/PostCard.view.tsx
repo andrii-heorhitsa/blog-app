@@ -6,9 +6,10 @@ import Link from "next/link";
 
 type PostCardView = {
   post: PostInfo;
+  priority?: boolean;
 };
 
-export function PostCard({ post }: PostCardView) {
+export function PostCard({ post, priority = false }: PostCardView) {
   const { id, title, description, coverImage, publishedAt, readingTime } = post;
 
   return (
@@ -20,13 +21,28 @@ export function PostCard({ post }: PostCardView) {
           fill
           className={styles.cardImage}
           sizes="(max-width: 768px) 100vw, 50vw"
+          priority={priority}
         />
       </div>
-      <Title as="h3">{title}</Title>
-      <p className={styles.description}>{description}</p>
-      <span className={styles.publishedAt}>{publishedAt}</span>
-      <span className={styles.readingTime}>{readingTime}</span>
-      <Link href={`/posts/${id}`}>Read more</Link>
+
+      <div className={styles.content}>
+        <Title as="h3">{title}</Title>
+
+        <hr />
+
+        <div className={styles.meta}>
+          <span className={styles.publishedAt}>🗓️{publishedAt}</span>
+          <span className={styles.readingTime}>
+            🕰️{readingTime} minutes reading time
+          </span>
+        </div>
+
+        <p className={styles.description}>{description}</p>
+
+        <Link href={`/posts/${id}`} className={styles.readMore}>
+          Read more
+        </Link>
+      </div>
     </div>
   );
 }

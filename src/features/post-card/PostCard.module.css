@@ -2,6 +2,15 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-main);
+  transition: box-shadow 0.2s ease;
+}
+
+.postCardContainer:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .imageWrapper {
@@ -14,12 +23,41 @@
   object-fit: cover;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: calc(var(--spacing-md) * 2) var(--spacing-md) var(--spacing-md);
+  gap: var(--spacing-sm);
+  text-align: left;
+}
+
 .description {
   flex-grow: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-block: var(--spacing-lg);
 }
 
-.publishedAt {
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
 }
 
-.readingTime {
+.readMore {
+  align-self: flex-end;
+  font-size: var(--font-size-sm);
+  color: var(--color-foreground);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.2s ease;
+}
+
+.readMore:hover {
+  opacity: 0.6;
 }
