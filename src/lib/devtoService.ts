@@ -18,6 +18,7 @@ export async function getPosts(
 ): Promise<PostInfo[]> {
   const result = await fetch(
     `${DEVTO_API_URL}/articles?per_page=${perPage}${page ? `&page=${page}` : ""}`,
+    { cache: "no-store" },
   );
 
   if (!result.ok) {
