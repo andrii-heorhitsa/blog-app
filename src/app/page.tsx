@@ -11,7 +11,7 @@ export default async function Home() {
     <div className={styles.main}>
       <main className={styles.container}>
         <Title as="h1">Dev.to Reader Title</Title>
-        <PostList posts={posts} />
+        <PostList initialPosts={posts} />
       </main>
     </div>
   );
