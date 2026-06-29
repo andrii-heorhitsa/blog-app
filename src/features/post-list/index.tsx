@@ -3,14 +3,31 @@
 import { PostInfo } from "@/types/posts";
 import { PostListView } from "./PostList.view";
 import usePosts from "./usePosts";
+import useIntersectionObserver from "@/lib/useIntersectionObserver";
 
 interface PostListViewProps {
   initialPosts: PostInfo[];
 }
 
 export function PostList({ initialPosts }: PostListViewProps) {
-  const { data, fetchNextPage } = usePosts(initialPosts);
-  const posts = data?.pages.flatMap((page) => page.data);
+  const {
+    data: posts,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = usePosts(initialPosts);
 
-  return <PostListView posts={posts} onLoadMore={fetchNextPage} />;
+  const triggerRef = useIntersectionObserver(() => {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  });
+
+  return (
+    <PostListView
+      posts={posts}
+      isFetchingNextPage={isFetchingNextPage}
+      triggerRef={triggerRef}
+    />
+  );
 }
