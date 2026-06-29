@@ -1,6 +1,7 @@
 import { fetchPosts } from "@/lib/postsApiClient";
 import { PostInfo } from "@/types/posts";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 
 export default function usePosts(initialPosts: PostInfo[]) {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -20,20 +21,22 @@ export default function usePosts(initialPosts: PostInfo[]) {
 
   const seenId = new Set<number>();
 
-  return {
-    data:
-      data?.pages
+  const transformedPosts = data?.pages
+    ? data.pages
         .flatMap((page) => page.data)
         .filter((post) => {
           if (seenId.has(post.id)) {
             return false;
           }
-
           seenId.add(post.id);
           return true;
-        }) || [],
-    fetchNextPage: fetchNextPage,
-    hasNextPage: hasNextPage,
-    isFetchingNextPage: isFetchingNextPage,
+        })
+    : [];
+
+  return {
+    data: transformedPosts,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
   };
 }
