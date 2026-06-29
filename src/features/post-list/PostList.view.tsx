@@ -23,7 +23,9 @@ export function PostListView({
         ))}
       </div>
 
-      <div ref={triggerRef}>{isFetchingNextPage && "Loading"}</div>
+      <div ref={triggerRef} className={styles.trigger}>
+        {isFetchingNextPage && "Loading"}
+      </div>
     </div>
   );
 }

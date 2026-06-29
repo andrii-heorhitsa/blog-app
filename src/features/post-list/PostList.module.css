@@ -30,3 +30,8 @@
 .loadMoreButton:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
+
+.trigger {
+  height: 1px;
+  margin-top: 10px;
+}

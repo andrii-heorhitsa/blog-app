@@ -17,11 +17,12 @@ export function PostList({ initialPosts }: PostListViewProps) {
     isFetchingNextPage,
   } = usePosts(initialPosts);
 
-  const triggerRef = useIntersectionObserver(() => {
-    if (hasNextPage && !isFetchingNextPage) {
+  const triggerRef = useIntersectionObserver(
+    () => {
       fetchNextPage();
-    }
-  });
+    },
+    { enabled: hasNextPage },
+  );
 
   return (
     <PostListView
