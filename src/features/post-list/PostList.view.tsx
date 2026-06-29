@@ -4,10 +4,15 @@ import styles from "./PostList.module.css";
 
 interface PostListViewProps {
   posts: PostInfo[];
-  onLoadMore: () => void;
+  isFetchingNextPage: boolean;
+  triggerRef: React.RefObject<HTMLDivElement | null>;
 }
 
-export function PostListView({ posts, onLoadMore }: PostListViewProps) {
+export function PostListView({
+  posts,
+  isFetchingNextPage,
+  triggerRef,
+}: PostListViewProps) {
   if (!posts) return null;
 
   return (
@@ -18,11 +23,7 @@ export function PostListView({ posts, onLoadMore }: PostListViewProps) {
         ))}
       </div>
 
-      <div className={styles.pagination}>
-        <button onClick={onLoadMore} className={styles.loadMoreButton}>
-          Load more
-        </button>
-      </div>
+      <div ref={triggerRef}>{isFetchingNextPage && "Loading"}</div>
     </div>
   );
 }
