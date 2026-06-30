@@ -1,9 +1,7 @@
 import { fetchPosts } from "@/lib/postsApiClient";
-import { PostInfo } from "@/types/posts";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useMemo } from "react";
 
-export default function usePosts(initialPosts: PostInfo[]) {
+export default function usePosts() {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
       queryKey: ["posts"],
@@ -11,10 +9,6 @@ export default function usePosts(initialPosts: PostInfo[]) {
       initialPageParam: 1,
       getNextPageParam: (lastPage, allPages) => {
         return lastPage.data.length === 0 ? undefined : allPages.length + 1;
-      },
-      initialData: {
-        pages: [{ success: true, data: initialPosts }],
-        pageParams: [1],
       },
       staleTime: 60 * 1000,
     });

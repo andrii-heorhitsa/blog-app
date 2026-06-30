@@ -19,7 +19,7 @@ export function PostListView({
     <div className={styles.wrapper}>
       <div className={styles.postListContainer}>
         {posts.map((post: PostInfo, index: number) => (
-          <PostCard key={post.id} post={post} priority={index < 2} />
+          <PostCard key={post.id} post={post} priority={index < 3} />
         ))}
       </div>
 

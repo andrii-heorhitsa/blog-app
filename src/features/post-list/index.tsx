@@ -1,27 +1,22 @@
 "use client";
 
-import { PostInfo } from "@/types/posts";
 import { PostListView } from "./PostList.view";
 import usePosts from "./usePosts";
 import useIntersectionObserver from "@/lib/useIntersectionObserver";
 
-interface PostListViewProps {
-  initialPosts: PostInfo[];
-}
-
-export function PostList({ initialPosts }: PostListViewProps) {
+export function PostList() {
   const {
     data: posts,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = usePosts(initialPosts);
+  } = usePosts();
 
   const triggerRef = useIntersectionObserver(
     () => {
       fetchNextPage();
     },
-    { enabled: hasNextPage },
+    { enabled: hasNextPage && !isFetchingNextPage },
   );
 
   return (
