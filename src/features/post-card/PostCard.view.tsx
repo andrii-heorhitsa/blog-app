@@ -1,11 +1,11 @@
 import { Title } from "@/components/title";
-import { PostInfo } from "@/types/posts";
+import { PostsInfo } from "@/types/posts";
 import Image from "next/image";
 import styles from "./PostCard.module.css";
 import Link from "next/link";
 
 type PostCardView = {
-  post: PostInfo;
+  post: PostsInfo;
   priority?: boolean;
 };
 
@@ -26,7 +26,9 @@ export function PostCard({ post, priority = false }: PostCardView) {
       </div>
 
       <div className={styles.content}>
-        <Title as="h3">{title}</Title>
+        <Link href={`/posts/${id}`}>
+          <Title as="h3">{title}</Title>
+        </Link>
 
         <hr />
 

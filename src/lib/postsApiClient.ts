@@ -1,10 +1,13 @@
-import { PostInfo } from "@/types/posts";
+import { PostInfo, PostsInfo } from "@/types/posts";
 
-type PostsResponse = {
-  success: boolean;
-  data: PostInfo[];
+type ApiResponse<T> = {
+  success?: boolean;
+  data: T;
 };
-export async function fetchPosts(page: number): Promise<PostsResponse> {
+
+export async function fetchPosts(
+  page: number,
+): Promise<ApiResponse<PostsInfo[]>> {
   const response = await fetch(`/api/posts?page=${page}&per_page=10`);
 
   if (!response.ok) {
@@ -12,4 +15,16 @@ export async function fetchPosts(page: number): Promise<PostsResponse> {
   }
 
   return response.json();
+}
+
+export async function fetchPostById(id: string): Promise<PostInfo> {
+  const response = await fetch(`/api/posts/${id}`);
+
+  if (!response.ok) {
+    throw new Error(`Client: Failed to fetch post with id ${id}`);
+  }
+
+  const result: { success: boolean; data: PostInfo } = await response.json();
+
+  return result.data;
 }
