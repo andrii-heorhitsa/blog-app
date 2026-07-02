@@ -12,7 +12,6 @@ export default async function Home() {
     queryKey: ["posts"],
     queryFn: async ({ pageParam }) => {
       const rawPosts = await getPosts(10, pageParam);
-      console.log(pageParam);
 
       return {
         success: true,

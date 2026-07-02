@@ -1,0 +1,20 @@
+.postPageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-main);
+  transition: box-shadow 0.2s ease;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.postImage {
+  object-fit: cover;
+}
