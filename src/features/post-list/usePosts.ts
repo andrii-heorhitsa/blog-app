@@ -1,4 +1,4 @@
-import { fetchPosts } from "@/lib/postsApiClient";
+import { fetchPosts } from "@/lib/posts-api-client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export default function usePosts() {

@@ -2,7 +2,7 @@
 
 import { PostListView } from "./PostList.view";
 import usePosts from "./usePosts";
-import useIntersectionObserver from "@/lib/useIntersectionObserver";
+import useIntersectionObserver from "@/lib/use-intersection-observer";
 
 export function PostList() {
   const {

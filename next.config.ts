@@ -5,11 +5,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "*.dev.to", // Дозволяє будь-які піддомени dev.to
+        hostname: "*.dev.to",
       },
       {
         protocol: "https",
-        hostname: "res.cloudinary.com", // Часто використовується авторами на dev.to
+        hostname: "res.cloudinary.com",
       },
     ],
   },

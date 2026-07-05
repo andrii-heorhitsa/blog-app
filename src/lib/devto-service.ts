@@ -1,4 +1,5 @@
 import { PostInfo, PostsInfo } from "@/types/posts";
+import { sanitizeArticleBody } from "./html-sanitizer";
 
 type PostsInfoDto = {
   id: number;
@@ -23,7 +24,7 @@ type PostInfoDto = {
   cover_image: string | null;
   social_image: string;
   reading_time_minutes: number;
-  published_at: string;
+  readable_publish_date: string;
   tags: string[];
   body_html: string;
   user: PostAuthorDto;
@@ -66,15 +67,16 @@ export async function getPostById(id: string): Promise<PostInfo> {
   }
 
   const rawPostData: PostInfoDto = await result.json();
+  const cleanBodyHtml = sanitizeArticleBody(rawPostData.body_html);
 
   return {
     id: rawPostData.id,
     title: rawPostData.title,
     coverImage: rawPostData.cover_image || rawPostData.social_image,
     readingTime: rawPostData.reading_time_minutes,
-    publishedAt: rawPostData.published_at,
+    publishedAt: rawPostData.readable_publish_date,
     tags: rawPostData.tags,
-    bodyHtml: rawPostData.body_html,
+    bodyHtml: cleanBodyHtml,
     author: {
       name: rawPostData.user.name,
       username: rawPostData.user.username,

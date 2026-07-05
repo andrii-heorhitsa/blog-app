@@ -1,5 +1,4 @@
-.main {
-  flex: 1;
+.containerWrapper {
   display: flex;
   justify-content: center;
   padding: var(--spacing-xl) var(--spacing-md);

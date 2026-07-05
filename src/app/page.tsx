@@ -1,6 +1,6 @@
 import { Title } from "@/components/title";
 import styles from "./page.module.css";
-import { getPosts } from "@/lib/devtoService";
+import { getPosts } from "@/lib/devto-service";
 import { PostList } from "@/features/post-list";
 import { getQueryClient } from "@/lib/get-query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
@@ -23,11 +23,11 @@ export default async function Home() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <div className={styles.main}>
-        <main className={styles.container}>
+      <div className={styles.containerWrapper}>
+        <div className={styles.container}>
           <Title as="h1">Dev.to Reader Title</Title>
           <PostList />
-        </main>
+        </div>
       </div>
     </HydrationBoundary>
   );

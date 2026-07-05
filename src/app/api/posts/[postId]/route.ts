@@ -1,4 +1,4 @@
-import { getPostById } from "@/lib/devtoService";
+import { getPostById } from "@/lib/devto-service";
 import { NextRequest } from "next/server";
 
 export async function GET(
