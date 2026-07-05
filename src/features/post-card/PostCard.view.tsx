@@ -20,7 +20,7 @@ export function PostCard({ post, priority = false }: PostCardView) {
           alt={title}
           fill
           className={styles.cardImage}
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 720px) 100vw, 720px"
           priority={priority}
         />
       </div>

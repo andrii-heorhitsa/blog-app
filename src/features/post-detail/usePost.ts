@@ -1,4 +1,4 @@
-import { fetchPostById } from "@/lib/postsApiClient";
+import { fetchPostById } from "@/lib/posts-api-client";
 import { useQuery } from "@tanstack/react-query";
 
 export default function usePost(postId: string) {
