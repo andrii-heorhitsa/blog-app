@@ -1,5 +1,5 @@
 import { PostDetail } from "@/features/post-detail";
-import { getPostById } from "@/lib/devtoService";
+import { getPostById } from "@/lib/devto-service";
 import { getQueryClient } from "@/lib/get-query-client";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
