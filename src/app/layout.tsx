@@ -33,7 +33,9 @@ export default function RootLayout({
     <html lang="en" className={`${roboto.className} ${cormorant.variable}`}>
       <body>
         <Header />
-        <Providers>{children}</Providers>
+        <Providers>
+          <main className="main-content">{children}</main>
+        </Providers>
         <Footer />
       </body>
     </html>

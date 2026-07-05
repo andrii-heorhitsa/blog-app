@@ -31,6 +31,7 @@
 
   /* margin/padding */
 
+  --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
@@ -40,6 +41,7 @@
 
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
+  --radius-lg: 50%;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -63,6 +65,12 @@ body {
   font-family: var(--font-roboto), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
