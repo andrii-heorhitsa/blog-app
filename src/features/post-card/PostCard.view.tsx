@@ -3,6 +3,9 @@ import { PostsInfo } from "@/types/posts";
 import Image from "next/image";
 import styles from "./PostCard.module.css";
 import Link from "next/link";
+import { useBookmarkStore } from "@/store/use-bookmark-store";
+import useHasHydrated from "@/hooks/use-has-hydrated";
+import Skeleton from "@/components/skeleton";
 
 type PostCardView = {
   post: PostsInfo;
@@ -11,6 +14,11 @@ type PostCardView = {
 
 export function PostCard({ post, priority = false }: PostCardView) {
   const { id, title, description, coverImage, publishedAt, readingTime } = post;
+  const toggleBookmark = useBookmarkStore((state) => state.toggleBookmark);
+  const hasHydrated = useHasHydrated();
+  const isBookmarked = useBookmarkStore((state) =>
+    state.bookmarkedIds.includes(post.id),
+  );
 
   return (
     <div className={styles.postCardContainer}>
@@ -37,6 +45,16 @@ export function PostCard({ post, priority = false }: PostCardView) {
           <span className={styles.readingTime}>
             🕰️{readingTime} minutes reading time
           </span>
+        </div>
+
+        <div className={styles.buttonWrapper}>
+          {hasHydrated ? (
+            <button onClick={() => toggleBookmark(post.id)}>
+              {isBookmarked ? "❤️" : "Add bookmark"}
+            </button>
+          ) : (
+            <Skeleton width={95} height={22} />
+          )}
         </div>
 
         <p className={styles.description}>{description}</p>
