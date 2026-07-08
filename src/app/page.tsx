@@ -26,6 +26,10 @@ export default async function Home() {
       <div className={styles.containerWrapper}>
         <div className={styles.container}>
           <Title as="h1">Dev.to Reader Title</Title>
+          <Title as="h2">
+            Subtitle to fix &quot;Heading elements are not in a
+            sequentially-descending order&quot;
+          </Title>
           <PostList />
         </div>
       </div>
