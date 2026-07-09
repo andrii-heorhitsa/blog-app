@@ -22,8 +22,6 @@ export default function PostDetailView({
 
   if (!post) return <div>The article is not found</div>;
 
-  console.log(post.author.profileImage);
-
   return (
     <div className={styles.postPageContainer}>
       <div className={styles.postHeaderContainer}>

@@ -15,8 +15,11 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <span>🚀 Dev.to Reader</span>
-      <AppLink href={"/bookmarks"}>
+      <AppLink href={"/"} ariaLabel={`Home Page Link`}>
+        <span>🚀 Dev.to Reader</span>
+      </AppLink>
+
+      <AppLink href={"/bookmarks"} ariaLabel={`Bookmarks Link`}>
         <Title as="h4">
           {hasHydrated ? (
             `Bookmarks quantity: ${bookmarksCount}`
