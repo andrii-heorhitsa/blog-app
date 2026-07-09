@@ -35,3 +35,12 @@ export const useBookmarkStore = create<BookmarkState>()(
     },
   ),
 );
+
+// Cross-Tab state sync fix. test version
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (event) => {
+    if (event.key === "devto-bookmarks") {
+      useBookmarkStore.persist.rehydrate();
+    }
+  });
+}

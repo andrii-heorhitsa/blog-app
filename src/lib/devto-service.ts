@@ -27,6 +27,7 @@ type PostInfoDto = {
   readable_publish_date: string;
   tags: string[];
   body_html: string;
+  description: string;
   user: PostAuthorDto;
 };
 
@@ -77,6 +78,7 @@ export async function getPostById(id: string): Promise<PostInfo> {
     publishedAt: rawPostData.readable_publish_date,
     tags: rawPostData.tags,
     bodyHtml: cleanBodyHtml,
+    description: rawPostData.description,
     author: {
       name: rawPostData.user.name,
       username: rawPostData.user.username,

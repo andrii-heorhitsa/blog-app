@@ -22,5 +22,6 @@ export type PostInfo = {
   publishedAt: string;
   tags: string[];
   bodyHtml: string;
+  description: string;
   author: PostAuthor;
 };
