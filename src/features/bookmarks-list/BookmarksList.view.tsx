@@ -1,8 +1,9 @@
-import { PostInfo, PostsInfo } from "@/types/posts";
+import { PostInfo } from "@/types/posts";
 import { PostCard } from "../post-card";
 import styles from "../post-list/PostList.module.css";
 import PostCardSkeleton from "../post-card/PostCardSkeleton.view";
 import { Title } from "@/components/title";
+import { RemoveBookmarkButton } from "@/components/bookmark-buttons/remove-bookmark-button";
 
 type BookmarksListProps = {
   posts: PostInfo[];
@@ -42,7 +43,12 @@ export function BookmarksListView({
       <div className={styles.wrapper}>
         <div className={styles.postListContainer}>
           {posts.map((post: PostInfo, index: number) => (
-            <PostCard key={post.id} post={post} priority={index < 3} />
+            <PostCard
+              key={post.id}
+              post={post}
+              priority={index < 3}
+              actions={<RemoveBookmarkButton postId={post.id} />}
+            />
           ))}
         </div>
       </div>

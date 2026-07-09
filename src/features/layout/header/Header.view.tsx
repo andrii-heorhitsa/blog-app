@@ -5,6 +5,7 @@ import styles from "./Header.module.css";
 import { Title } from "@/components/title";
 import useHasHydrated from "@/hooks/use-has-hydrated";
 import Skeleton from "@/components/skeleton";
+import { AppLink } from "@/components/app-link";
 
 export function Header() {
   const hasHydrated = useHasHydrated();
@@ -15,13 +16,15 @@ export function Header() {
   return (
     <header className={styles.header}>
       <span>🚀 Dev.to Reader</span>
-      <Title as="h4">
-        {hasHydrated ? (
-          `Bookmarks quantity: ${bookmarksCount}`
-        ) : (
-          <Skeleton width={180} height={24} />
-        )}
-      </Title>
+      <AppLink href={"/bookmarks"}>
+        <Title as="h4">
+          {hasHydrated ? (
+            `Bookmarks quantity: ${bookmarksCount}`
+          ) : (
+            <Skeleton width={180} height={24} />
+          )}
+        </Title>
+      </AppLink>
     </header>
   );
 }

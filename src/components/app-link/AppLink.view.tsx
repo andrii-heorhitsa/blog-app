@@ -5,13 +5,21 @@ type LinkProps = {
   children: React.ReactNode;
   href: string | UrlObject;
   disabled?: boolean;
+  className?: string;
 };
 
-export function AppLink({ children, href, disabled }: LinkProps) {
+export function AppLink({
+  children,
+  href,
+  disabled,
+  className = "",
+}: LinkProps) {
   return disabled === true ? (
     <span>{children}</span>
   ) : (
-    <Link href={href}>{children}</Link>
+    <Link href={href} className={className}>
+      {children}
+    </Link>
   );
 }
 

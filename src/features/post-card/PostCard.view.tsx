@@ -6,19 +6,20 @@ import Link from "next/link";
 import { useBookmarkStore } from "@/store/use-bookmark-store";
 import useHasHydrated from "@/hooks/use-has-hydrated";
 import Skeleton from "@/components/skeleton";
+import { AppLink } from "@/components/app-link";
 
-type PostCardView = {
+type PostCardViewProps = {
   post: PostsInfo;
   priority?: boolean;
+  actions: React.ReactNode;
 };
 
-export function PostCard({ post, priority = false }: PostCardView) {
+export function PostCardView({
+  post,
+  priority = false,
+  actions,
+}: PostCardViewProps) {
   const { id, title, description, coverImage, publishedAt, readingTime } = post;
-  const toggleBookmark = useBookmarkStore((state) => state.toggleBookmark);
-  const hasHydrated = useHasHydrated();
-  const isBookmarked = useBookmarkStore((state) =>
-    state.bookmarkedIds.includes(post.id),
-  );
 
   return (
     <div className={styles.postCardContainer}>
@@ -34,9 +35,9 @@ export function PostCard({ post, priority = false }: PostCardView) {
       </div>
 
       <div className={styles.content}>
-        <Link href={`/posts/${id}`}>
+        <AppLink href={`/posts/${id}`}>
           <Title as="h3">{title}</Title>
-        </Link>
+        </AppLink>
 
         <hr />
 
@@ -47,21 +48,13 @@ export function PostCard({ post, priority = false }: PostCardView) {
           </span>
         </div>
 
-        <div className={styles.buttonWrapper}>
-          {hasHydrated ? (
-            <button onClick={() => toggleBookmark(post.id)}>
-              {isBookmarked ? "❤️" : "Add bookmark"}
-            </button>
-          ) : (
-            <Skeleton width={95} height={22} />
-          )}
-        </div>
+        <div className={styles.buttonWrapper}>{actions}</div>
 
         <p className={styles.description}>{description}</p>
 
-        <Link href={`/posts/${id}`} className={styles.readMore}>
+        <AppLink href={`/posts/${id}`} className={styles.readMore}>
           Read more
-        </Link>
+        </AppLink>
       </div>
     </div>
   );

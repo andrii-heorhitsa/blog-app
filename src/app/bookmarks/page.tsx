@@ -1,4 +1,3 @@
-import { Title } from "@/components/title";
 import { BookmarksList } from "@/features/bookmarks-list";
 import styles from "../page.module.css";
 
