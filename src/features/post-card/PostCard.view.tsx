@@ -2,10 +2,6 @@ import { Title } from "@/components/title";
 import { PostsInfo } from "@/types/posts";
 import Image from "next/image";
 import styles from "./PostCard.module.css";
-import Link from "next/link";
-import { useBookmarkStore } from "@/store/use-bookmark-store";
-import useHasHydrated from "@/hooks/use-has-hydrated";
-import Skeleton from "@/components/skeleton";
 import { AppLink } from "@/components/app-link";
 
 type PostCardViewProps = {
@@ -35,7 +31,10 @@ export function PostCardView({
       </div>
 
       <div className={styles.content}>
-        <AppLink href={`/posts/${id}`}>
+        <AppLink
+          href={`/posts/${id}`}
+          ariaLabel={`Read more about ${post.title}`}
+        >
           <Title as="h3">{title}</Title>
         </AppLink>
 
@@ -52,7 +51,11 @@ export function PostCardView({
 
         <p className={styles.description}>{description}</p>
 
-        <AppLink href={`/posts/${id}`} className={styles.readMore}>
+        <AppLink
+          href={`/posts/${id}`}
+          className={styles.readMore}
+          ariaLabel={`Read more about ${post.title}`}
+        >
           Read more
         </AppLink>
       </div>
