@@ -39,7 +39,7 @@ export async function getPosts(
 ): Promise<PostsInfo[]> {
   const result = await fetch(
     `${DEVTO_API_URL}/articles?per_page=${perPage}${page ? `&page=${page}` : ""}`,
-    { cache: "no-store" },
+    { next: { revalidate: 60 } },
   );
 
   if (!result.ok) {
@@ -59,9 +59,7 @@ export async function getPosts(
 }
 
 export async function getPostById(id: string): Promise<PostInfo> {
-  const result = await fetch(`${DEVTO_API_URL}/articles/${id}`, {
-    cache: "no-store",
-  });
+  const result = await fetch(`${DEVTO_API_URL}/articles/${id}`);
 
   if (!result.ok) {
     throw new Error(`Failed to fetch article with id ${id}`);

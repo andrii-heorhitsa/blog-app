@@ -1,0 +1,7 @@
+# Dev.to Reader
+
+A highly performance-optimized frontend application for reading Dev.to posts, built with Next.js.
+
+## Core Pages
+- [Home Page](https://localhost:3000/)
+- [Bookmarks](https://localhost:3000/bookmarks)
