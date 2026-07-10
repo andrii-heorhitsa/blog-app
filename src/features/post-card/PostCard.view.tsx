@@ -8,12 +8,14 @@ type PostCardViewProps = {
   post: PostsInfo;
   priority?: boolean;
   actions: React.ReactNode;
+  fetchPriority?: "high" | "auto";
 };
 
 export function PostCardView({
   post,
   priority = false,
   actions,
+  fetchPriority,
 }: PostCardViewProps) {
   const { id, title, description, coverImage, publishedAt, readingTime } = post;
 
@@ -26,7 +28,8 @@ export function PostCardView({
           fill
           className={styles.cardImage}
           sizes="(max-width: 720px) 100vw, 720px"
-          priority={priority}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={fetchPriority ?? "auto"}
         />
       </div>
 
@@ -56,7 +59,7 @@ export function PostCardView({
           className={styles.readMore}
           ariaLabel={`Read more about ${post.title}`}
         >
-          Read more
+          Read more <span className={styles.srOnly}>about {post.title}</span>
         </AppLink>
       </div>
     </div>

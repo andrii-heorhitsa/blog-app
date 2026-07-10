@@ -25,6 +25,7 @@ export function PostListView({
             key={post.id}
             post={post}
             priority={index < 3}
+            fetchPriority={index === 0 ? "high" : "auto"}
             actions={<ToggleBookmarkButton postId={post.id} />}
           />
         ))}

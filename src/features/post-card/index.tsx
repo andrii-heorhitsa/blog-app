@@ -5,8 +5,21 @@ type PostCardProps = {
   post: PostsInfo;
   priority?: boolean;
   actions: React.ReactNode;
+  fetchPriority?: "high" | "auto";
 };
 
-export function PostCard({ post, priority, actions }: PostCardProps) {
-  return <PostCardView post={post} priority={priority} actions={actions} />;
+export function PostCard({
+  post,
+  priority,
+  fetchPriority,
+  actions,
+}: PostCardProps) {
+  return (
+    <PostCardView
+      post={post}
+      priority={priority}
+      fetchPriority={fetchPriority}
+      actions={actions}
+    />
+  );
 }
