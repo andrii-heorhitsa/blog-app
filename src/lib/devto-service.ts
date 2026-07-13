@@ -59,7 +59,9 @@ export async function getPosts(
 }
 
 export async function getPostById(id: string): Promise<PostInfo> {
-  const result = await fetch(`${DEVTO_API_URL}/articles/${id}`);
+  const result = await fetch(`${DEVTO_API_URL}/articles/${id}`, {
+    next: { revalidate: 3600 },
+  });
 
   if (!result.ok) {
     throw new Error(`Failed to fetch article with id ${id}`);
