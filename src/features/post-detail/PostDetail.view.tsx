@@ -2,6 +2,7 @@ import { Title } from "@/components/title";
 import { PostInfo } from "@/types/posts";
 import Image from "next/image";
 import styles from "./PostDetail.module.css";
+import PostDetailSkeleton from "./PostDetailSkeleton.view";
 
 type PostDetailViewProps = {
   post: PostInfo | undefined;
@@ -14,7 +15,7 @@ export default function PostDetailView({
   isLoading,
   error,
 }: PostDetailViewProps) {
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <PostDetailSkeleton />;
 
   if (error) {
     return <div>Error: {error.message}</div>;

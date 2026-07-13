@@ -24,26 +24,3 @@ export function AppLink({
     </Link>
   );
 }
-
-// const searchParams = await props.searchParams;
-// const page = Number.parseInt(searchParams.page ?? "1");
-// const posts = await getPosts(10, page);
-
-{
-  /* <AppLink
-  href={{
-    query: { page: page + 1 },
-  }}
-  disabled={page === 3}
-  >
-  Next
-  </AppLink>
-  <AppLink
-  href={{
-    query: { page: page - 1 },
-  }}
-  disabled={page === 1}
-  >
-  Prev
-</AppLink> */
-}
