@@ -119,8 +119,16 @@
   padding-left: var(--spacing-sm);
 }
 
-/* Зображення всередині статті (робимо їх адаптивними, щоб не ламали контейнер) */
+/* Зображення та відео всередині статті (робимо їх адаптивними, щоб не ламали контейнер) */
 .postBody img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: var(--spacing-xl) auto;
+  border-radius: var(--radius-md);
+}
+
+.postBody video {
   max-width: 100%;
   height: auto;
   display: block;
@@ -151,6 +159,8 @@
   padding: 0.2rem 0.4rem;
   border-radius: var(--radius-sm);
   font-size: 85%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Великі блоки коду (преформатований текст) */
@@ -183,6 +193,9 @@
 
 .postBody :global(.highlight pre) {
   margin-bottom: 0; /* прибираємо подвійний маржин */
+  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
 }
 
 /* Цитати (blockquote) */
@@ -194,4 +207,32 @@
   color: var(--color-text-muted);
   font-style: italic;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* Обгортка таблиці від Dev.to (дозволяємо горизонтальну прокрутку) */
+.postBody :global(.table-wrapper-paragraph) {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin-bottom: var(--spacing-lg);
+  -webkit-overflow-scrolling: touch; /* плавний скрол на iOS */
+}
+
+/* Базові стилі для таблиці, щоб вона виглядала охайно */
+.postBody :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-md);
+}
+
+.postBody :global(th),
+.postBody :global(td) {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.postBody :global(th) {
+  background-color: var(--color-background);
+  font-weight: var(--font-weight-bold);
 }
