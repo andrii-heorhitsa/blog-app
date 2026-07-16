@@ -3,6 +3,7 @@ import { PostInfo } from "@/types/posts";
 import Image from "next/image";
 import styles from "./PostDetail.module.css";
 import PostDetailSkeleton from "./PostDetailSkeleton.view";
+import { useEffect, useRef } from "react";
 
 type PostDetailViewProps = {
   post: PostInfo | undefined;
@@ -15,6 +16,20 @@ export default function PostDetailView({
   isLoading,
   error,
 }: PostDetailViewProps) {
+  const bodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const videos = bodyRef.current?.querySelectorAll("video");
+    videos?.forEach((video) => {
+      video.muted = true;
+      video.setAttribute("playsinline", "true");
+      video.loop = true;
+
+      video.load();
+      video.play().catch(() => {});
+    });
+  }, [post?.bodyHtml]);
+
   if (isLoading) return <PostDetailSkeleton />;
 
   if (error) {
@@ -63,6 +78,7 @@ export default function PostDetailView({
         </div>
       </div>
       <div
+        ref={bodyRef}
         className={styles.postBody}
         dangerouslySetInnerHTML={{ __html: post.bodyHtml }}
       ></div>
