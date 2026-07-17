@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import Providers from "./providers";
 import { Header } from "@/features/layout/header";
 import { Footer } from "@/features/layout/footer";
+import { ScrollToTopButton } from "@/components/scroll-to-top-button";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -37,6 +38,7 @@ export default function RootLayout({
           <main className="main-content">{children}</main>
         </Providers>
         <Footer />
+        <ScrollToTopButton />
       </body>
     </html>
   );
