@@ -14,7 +14,7 @@ export default function ScrollToTopButtonView({
       type="button"
       onClick={onClick}
       aria-label="Scroll Up"
-      className={`test-class ${styles.button} ${isVisible ? styles.visible : ""}`}
+      className={`${styles.button} ${isVisible ? styles.visible : ""}`}
     >
       ↑
     </button>
