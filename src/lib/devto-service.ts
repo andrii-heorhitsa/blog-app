@@ -36,9 +36,10 @@ const DEVTO_API_URL = "https://dev.to/api";
 export async function getPosts(
   perPage: number = 10,
   page?: number,
+  top: number = 7,
 ): Promise<PostsInfo[]> {
   const result = await fetch(
-    `${DEVTO_API_URL}/articles?per_page=${perPage}${page ? `&page=${page}` : ""}`,
+    `${DEVTO_API_URL}/articles?per_page=${perPage}${page ? `&page=${page}` : ""}&top=${top}`,
     { next: { revalidate: 60 } },
   );
 
